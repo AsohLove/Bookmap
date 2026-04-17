@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 export default function DashboardLayout() {
   return (
-    <div>
+    <div className="p-3">
         <Navbar />
 
         <main>

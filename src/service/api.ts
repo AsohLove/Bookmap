@@ -1,6 +1,6 @@
-import type { BookType } from "../types/database";
+import type { BookResponse } from "../types/database";
 
-export  async function fetchBook(searchTerm: string): Promise<BookType>{
+export  async function fetchBook(searchTerm: string): Promise<BookResponse>{
     const res =  await fetch(`https://openlibrary.org/search.json?q=${searchTerm}`)
 
     if (!res.ok) {

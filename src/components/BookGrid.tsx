@@ -1,0 +1,27 @@
+import { useQuery } from "@tanstack/react-query";
+import { fetchBook } from "../service/api";
+import BookCard from "./BookCard";
+import type { BookResponse } from "../types/database";
+
+export default function BookGrid({ query }: { query: string }) {
+  const { data, isLoading, isError } = useQuery<BookResponse>({
+    queryKey: ["books", query],
+    queryFn: () => fetchBook(query),
+    enabled: !!query.trim(),
+  });
+
+  if (isLoading) return <p>Books loading...</p>;
+
+  if (isError) return <p>Error fetching books.</p>;
+
+  return (
+    <div>
+      <h1>BOOKS</h1>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  gap-4">
+        {data?.docs?.map((book) => (
+          <BookCard key={book.key} book={book} />
+        ))}
+      </div>
+    </div>
+  );
+}

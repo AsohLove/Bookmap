@@ -5,9 +5,9 @@ export interface BookResponse {
 }
 
 export interface BookType {
-    key: number;
+    key: string;
     title: string;
-    author_name: string;
-    first_published_year?: number;
+    author_name?: string[];
+    first_publish_year?: number;
     cover_i?: number;
 }
