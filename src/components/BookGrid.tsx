@@ -14,6 +14,14 @@ export default function BookGrid({ query }: { query: string }) {
 
   if (isError) return <p>Error fetching books.</p>;
 
+  if (!query.length) {
+    return (
+        <p className="text-center text-gray-700 mt-6">
+            No Books found for {query}
+        </p>
+    )
+  }
+
   return (
     <div>
       <h1>BOOKS</h1>

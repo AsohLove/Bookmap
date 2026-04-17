@@ -12,7 +12,7 @@ export default function Home() {
                 <button>SORT</button>
             </div>
         </div>
-        
+
          <BookGrid query="Harry porter"/>
     </div>
   )
