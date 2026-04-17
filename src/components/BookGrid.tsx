@@ -2,12 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchBook } from "../service/api";
 import BookCard from "./BookCard";
 import type { BookResponse } from "../types/database";
+import { useDebounce } from "use-debounce"
+
 
 export default function BookGrid({ query }: { query: string }) {
+  const [debouncedQuery] = useDebounce(query, 500)
+
+
   const { data, isLoading, isError } = useQuery<BookResponse>({
-    queryKey: ["books", query],
-    queryFn: () => fetchBook(query),
-    enabled: !!query.trim(),
+    queryKey: ["books", debouncedQuery],
+    queryFn: () => fetchBook(debouncedQuery),
+    enabled: !!debouncedQuery.trim(),
   });
 
   if (isLoading) return <p>Books loading...</p>;

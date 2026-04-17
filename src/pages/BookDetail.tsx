@@ -34,6 +34,7 @@ export default function BookDetail() {
     >
         ← BACK TO SEARCH
     </button>
+    
     <div>
         <h2>{data.title}</h2>
         <p>

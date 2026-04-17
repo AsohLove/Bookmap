@@ -1,4 +1,4 @@
-import type { BookDetailsType, BookResponse } from "../types/database";
+import type { BookDetailsType, BookResponse, EditionType } from "../types/database";
 
 export  async function fetchBook(searchTerm: string): Promise<BookResponse>{
     const res =  await fetch(`https://openlibrary.org/search.json?q=${searchTerm}`)
@@ -19,4 +19,17 @@ export async function fetchBookDetails(bookKey: string): Promise<BookDetailsType
 
     return res.json();
 
+}
+
+export async function fetchEditions(bookKey: string): Promise<EditionType[]> {
+    const res = await fetch(
+        `https://openlibrary.org/works/${bookKey}/editions.json?limit=10`
+    )
+
+    if (!res.ok) {
+        throw new Error(`Failed to fetch editions for ${bookKey}`)
+    }
+
+    const data = await res.json();
+    return data.entries || [];
 }
