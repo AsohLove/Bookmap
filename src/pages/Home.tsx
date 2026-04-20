@@ -4,6 +4,9 @@ import SearchBar from "../components/SearchBar";
 
 export default function Home() {
   const [search, setsearch] = useState("")
+  const [page, setpage] = useState(1)
+
+
 
   return (
     <div>
@@ -16,7 +19,20 @@ export default function Home() {
             </div>
         </div>
 
-         <BookGrid query={search}/>
+         <BookGrid query={search} page={page}/>
+
+      <div>
+        <p>Showing 1-12 of {search.length} curations</p>
+        <div>
+          <button onClick={() => setpage((p) => Math.max(1, p - 1))}>
+            Previous
+          </button>
+
+          <button onClick={() => setpage((p) => p + 1)}>
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

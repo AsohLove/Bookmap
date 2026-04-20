@@ -1,7 +1,7 @@
 import type { BookDetailsType, BookResponse, EditionType } from "../types/database";
 
-export  async function fetchBook(searchTerm: string): Promise<BookResponse>{
-    const res =  await fetch(`https://openlibrary.org/search.json?q=${searchTerm}`)
+export  async function fetchBook(searchTerm: string, page: number): Promise<BookResponse>{
+    const res =  await fetch(`https://openlibrary.org/search.json?q=${searchTerm}&page=${page}&limit=10`)
 
     if (!res.ok) {
         throw new Error(`API Error: ${res.status}`);
