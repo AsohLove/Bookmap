@@ -3,9 +3,17 @@ import { fetchBook } from "../service/api";
 import BookCard from "./BookCard";
 import type { BookResponse } from "../types/database";
 import { useDebounce } from "use-debounce"
+import { useEffect } from "react";
+import Loader from "./Loader";
+
+type Props = {
+  query: string;
+  page: number;
+  onTotalChange: (total: number) => void;
+}
 
 
-export default function BookGrid({ query, page }: { query: string, page: number }) {
+export default function BookGrid({ query, page, onTotalChange }: Props) {
   const [debouncedQuery] = useDebounce(query, 500)
 
   const searchTerm = debouncedQuery.trim() || "bestseller";
@@ -17,7 +25,13 @@ export default function BookGrid({ query, page }: { query: string, page: number 
     enabled: !!searchTerm.trim(),
   });
 
-  if (isLoading) return <p>Books loading...</p>;
+  useEffect(() => {
+    if (data?.numFound) {
+      onTotalChange(data.numFound);
+    }
+  }, [data?.numFound, onTotalChange])
+
+  if (isLoading) return <Loader />
 
   if (isError) return <p>Error fetching books.</p>;
 
