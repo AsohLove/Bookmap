@@ -9,8 +9,6 @@ export default function ReadingList() {
   const featuredBook = books[0];
   const otherBooks = books.slice(1);
 
-  console.log(books);
-  
 
   return (
     <div className="bg-gray-50 min-h-screen">

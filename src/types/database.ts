@@ -20,7 +20,6 @@ export interface BookDetailsType {
   covers?: number[];
   authors?: { author: { key: string } }[];
   first_publish_date?: string;
-  edition?: EditionType[];
 }
 
 export interface EditionType {
