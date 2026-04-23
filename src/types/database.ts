@@ -10,6 +10,7 @@ export interface BookType {
   author_name?: string[];
   first_publish_year?: number;
   cover_i?: number;
+  excerpts: string[];
 }
 
 export interface BookDetailsType {
@@ -20,6 +21,7 @@ export interface BookDetailsType {
   covers?: number[];
   authors?: { author: { key: string } }[];
   first_publish_date?: string;
+  excerpts: string;
 }
 
 export interface EditionType {

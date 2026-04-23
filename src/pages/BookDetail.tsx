@@ -32,15 +32,15 @@ export default function BookDetail() {
     queryKey: ["authors", authorKeys],
     queryFn: async () => {
       const results = await Promise.all(
-        authorKeys.map((key) => fetchAuthor(key))
+        authorKeys.map((key) => fetchAuthor(key)),
       );
       return results;
     },
     enabled: authorKeys.length > 0,
+  });
 
-  })
-
-  const authorNames = authorsData?.map((a) => a.name).join(", ") || "Unknown author"
+  const authorNames =
+    authorsData?.map((a) => a.name).join(", ") || "Unknown author";
 
   if (isLoading) return <Loader />;
   if (isError) return <p>Error fetching book details.</p>;
@@ -58,6 +58,16 @@ export default function BookDetail() {
 
   const isBookSaved = isSaved(data.key);
 
+  function getCuratorQuote(description: string): string {
+    if (description.length > 100) {
+      return description.substring(0, 50) + "...";
+    }
+
+    return description || "An essential volume for the modern collection.";
+  }
+
+  const curatorQuote = getCuratorQuote(description);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -74,7 +84,7 @@ export default function BookDetail() {
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
+          <div className="relative w-full h-64 md:h-80 lg:h-100">
             <img
               src={
                 coverId
@@ -82,16 +92,24 @@ export default function BookDetail() {
                   : ""
               }
               alt={data.title}
-              className="w-full h-125 object-cover rounded-lg shadow"
+              className=" w-full h-64 md:h-80 lg:h-100 object-cover rounded-lg shadow"
             />
+            <div className="absolute -bottom-8 -right-5 bg-white backdrop-blur-sm text-sm text-gray-900 px-3 py-2 shadow-md max-w-40">
+              <p className="italic line-clamp-3">"{curatorQuote}"</p>
+              <p className="mt-1 font-bold text-[10px] tracking-wide uppercase">
+                CURATOR COLLECTION
+              </p>
+            </div>
           </div>
 
           <div>
+            <div>
+              <h2>{data?.subjects?.[0] || "Popular Books"}</h2>
+              <h2></h2>
+            </div>
             <h2 className="text-4xl font-bold text-blue-900">{data.title}</h2>
 
-            <p className="text-gray-600 mt-2">
-              by {authorNames}
-            </p>
+            <p className="text-gray-600 mt-2">by {authorNames}</p>
 
             <div className="flex gap-4 mt-6">
               <button
@@ -102,11 +120,13 @@ export default function BookDetail() {
                     : "bg-blue-900 text-white hover:bg-blue-800"
                 }`}
               >
-                <BookMarked size={24} />{isBookSaved ? "Saved" : "Add to Reading List"}
+                <BookMarked size={24} />
+                {isBookSaved ? "Saved" : "Add to Reading List"}
               </button>
 
               <button className="px-4 flex gap-2 cursor-pointer py-2 border rounded text-gray-700 hover:bg-gray-100">
-                <Share2 size={24}/>Share Citation
+                <Share2 size={24} />
+                Share Citation
               </button>
             </div>
 
