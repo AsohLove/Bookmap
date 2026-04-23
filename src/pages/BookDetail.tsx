@@ -76,12 +76,14 @@ export default function BookDetail() {
       className="min-h-screen bg-gray-50"
     >
       <div className="max-w-6xl mx-auto p-6">
-        <button
+        <motion.button
+          whileHover={{ x: -10 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
           onClick={() => navigate(-1)}
-          className="mb-6 cursor-pointer text-amber-600 font-medium hover:underline"
+          className="mb-6 cursor-pointer text-amber-600 text-sm font-semibold"
         >
           ← BACK TO SEARCH
-        </button>
+        </motion.button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="relative w-full h-64 md:h-80 lg:h-100">
@@ -103,9 +105,9 @@ export default function BookDetail() {
           </div>
 
           <div>
-            <div>
-              <h2>{data?.subjects?.[0] || "Popular Books"}</h2>
-              <h2></h2>
+            <div className="flex gap-2">
+              <h2 className="p-2 text-sm text-orange-500 text-center font-bold bg-red-200 rounded-full max-w-40">{data?.subjects?.[0] || "Popular Books"}</h2>
+              <h2 className="p-2 text-sm text-orange-500 text-center font-bold bg-red-200 rounded-full max-w-40">EDITION</h2>
             </div>
             <h2 className="text-4xl font-bold text-blue-900">{data.title}</h2>
 

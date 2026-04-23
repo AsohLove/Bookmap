@@ -4,8 +4,8 @@ import {User } from 'lucide-react'
 export default function Navbar() {
 
   const navStyle = ({isActive}: {isActive: boolean}) => 
-    isActive ? "font-semibold border-b-2 border-orange-600 pb-1" 
-             : "hover:text-gray-500 dark:hover:text-gray-300 transition font-semibold"
+    isActive ? "font-semibold text-sm border-b-2 border-orange-600 pb-1" 
+             : "hover:text-gray-500 text-sm dark:hover:text-gray-300 transition font-semibold"
   
   return (
     <div className="flex justify-around">

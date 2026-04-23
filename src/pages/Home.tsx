@@ -18,7 +18,8 @@ export default function Home() {
 
   return (
     <div>
-        <SearchBar query={search} setQuery={handleSearch} />
+      <div className="max-w-7xl mx-auto">
+          <SearchBar query={search} setQuery={handleSearch} />
         <div className="flex justify-between my-3">
             <h2 className="text-slate-800 text-2xl font-medium">Latest Acquisitions</h2>
             <div className="flex gap-3">
@@ -50,6 +51,8 @@ export default function Home() {
           </button>
         </div>
       </div>
+      </div>
+        
       <footer>
         <div className="flex justify-evenly mt-4">
           <h2>The Editorial Scholar</h2>

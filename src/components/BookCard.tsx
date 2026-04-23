@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import type { BookType } from "../types/database";
 import { useNavigate } from "react-router";
+import { motion } from "framer-motion";
 import { useReadingList } from "../hooks/useReadingList";
 
 export default function BookCard({ book }: { book: BookType }) {
@@ -21,11 +22,12 @@ export default function BookCard({ book }: { book: BookType }) {
   };
 
   return (
-    <div
+    <motion.div
       onClick={() => navigate(`/book/${book.key.replace("/works/", "")}`)}
       className="relative cursor-pointer"
     >
-      <img
+      <motion.img
+        whileHover={{ y: -6, x: -6 }}
         src={
           book?.cover_i
             ? `https://covers.openlibrary.org/b/id/${book?.cover_i}-L.jpg`
@@ -44,11 +46,11 @@ export default function BookCard({ book }: { book: BookType }) {
         />
       </button>
 
-      <div className="flex flex-col gap-3">
-        <h2>{book?.title}</h2>
-        <p>{book?.author_name}</p>
-        <p>{book?.first_publish_year}</p>
+      <div className="flex flex-col gap-1">
+        <h2 className="font-bold text-2xl hover:text-red-400 ">{book?.title}</h2>
+        <p className="text-gray-600 text-lg">{book?.author_name}</p>
+        <p className="text-gray-600">{book?.first_publish_year}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
