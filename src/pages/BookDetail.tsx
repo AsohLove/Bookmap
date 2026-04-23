@@ -6,6 +6,7 @@ import type { BookDetailsType, EditionType } from "../types/database";
 import { NavLink } from "react-router";
 import Loader from "../components/Loader";
 import { useReadingList } from "../hooks/useReadingList";
+import { BookMarked, Share2 } from "lucide-react";
 
 export default function BookDetail() {
   const { id } = useParams();
@@ -13,11 +14,7 @@ export default function BookDetail() {
 
   const { addReadingListBook, isSaved } = useReadingList();
 
-  const {
-    data,
-    isLoading,
-    isError,
-  } = useQuery<BookDetailsType>({
+  const { data, isLoading, isError } = useQuery<BookDetailsType>({
     queryKey: ["book", id],
     queryFn: () => fetchBookDetails(id!),
     enabled: !!id,
@@ -52,19 +49,15 @@ export default function BookDetail() {
       transition={{ duration: 0.4 }}
       className="min-h-screen bg-gray-50"
     >
-     
       <div className="max-w-6xl mx-auto p-6">
         <button
           onClick={() => navigate(-1)}
-          className="mb-6 text-amber-600 font-medium hover:underline"
+          className="mb-6 cursor-pointer text-amber-600 font-medium hover:underline"
         >
           ← BACK TO SEARCH
         </button>
 
-       
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          
           <div>
             <img
               src={
@@ -77,53 +70,48 @@ export default function BookDetail() {
             />
           </div>
 
-          
           <div>
-            <h2 className="text-4xl font-bold text-gray-900">
-              {data.title}
-            </h2>
+            <h2 className="text-4xl font-bold text-blue-900">{data.title}</h2>
 
-          
             <p className="text-gray-600 mt-2">
               Author information not available
             </p>
 
-            
             <div className="flex gap-4 mt-6">
               <button
                 onClick={() => addReadingListBook(data)}
-                className={`px-4 py-2 rounded font-semibold transition ${
+                className={`px-4 py-2 cursor-pointer flex gap-2 rounded font-semibold transition ${
                   isBookSaved
                     ? "bg-gray-300 text-gray-700"
                     : "bg-blue-900 text-white hover:bg-blue-800"
                 }`}
               >
-                {isBookSaved ? "Saved" : "Add to Reading List"}
+                <BookMarked size={24} />{isBookSaved ? "Saved" : "Add to Reading List"}
               </button>
 
-              <button className="px-4 py-2 border rounded text-gray-700 hover:bg-gray-100">
-                Share Citation
+              <button className="px-4 flex gap-2 cursor-pointer py-2 border rounded text-gray-700 hover:bg-gray-100">
+                <Share2 size={24}/>Share Citation
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 mt-8 text-sm">
+            <div className="flex gap-4 mt-8 text-sm border-t border-b p-5 border-gray-300">
               <div>
                 <p className="text-gray-500">PAGE COUNT</p>
-                <p className="font-semibold">
+                <p className="font-bold text-slate-900">
                   {firstEdition?.number_of_pages || "N/A"}
                 </p>
               </div>
 
               <div>
                 <p className="text-gray-500">PUBLISHER</p>
-                <p className="font-semibold">
+                <p className="font-bold text-slate-900">
                   {firstEdition?.publishers?.[0] || "N/A"}
                 </p>
               </div>
 
               <div>
                 <p className="text-gray-500">YEAR</p>
-                <p className="font-semibold">
+                <p className="font-bold text-slate-900">
                   {firstEdition?.publish_date ||
                     data.first_publish_date ||
                     "N/A"}
@@ -132,19 +120,15 @@ export default function BookDetail() {
 
               <div>
                 <p className="text-gray-500">ISBN</p>
-                <p className="font-semibold">
+                <p className="font-bold text-slate-900">
                   {firstEdition?.isbn_13?.[0] || "N/A"}
                 </p>
               </div>
             </div>
 
             <div className="mt-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Abstract
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {description}
-              </p>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">Abstract</h3>
+              <p className="text-gray-700 leading-relaxed">{description}</p>
             </div>
 
             <div className="flex flex-wrap gap-2 mt-6">
@@ -164,12 +148,10 @@ export default function BookDetail() {
       <footer className="bg-white border-t mt-12">
         <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row justify-between gap-4">
           <div>
-            <h2 className="font-bold text-gray-900">
-              The Editorial Scholar
-            </h2>
+            <h2 className="font-bold text-gray-900">The Editorial Scholar</h2>
             <p className="text-sm text-gray-600">
-              &copy; {new Date().getFullYear()} The Editorial Scholar.
-              A Digital Curator Experience.
+              &copy; {new Date().getFullYear()} The Editorial Scholar. A Digital
+              Curator Experience.
             </p>
           </div>
 
