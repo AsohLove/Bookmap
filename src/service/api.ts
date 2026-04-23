@@ -33,3 +33,13 @@ export async function fetchEditions(bookKey: string): Promise<EditionType[]> {
     const data = await res.json();
     return data.entries || [];
 }
+
+export async function fetchAuthor(authorKey: string){
+    const res = await fetch(`https://openlibrary.org${authorKey}.json`);
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch author")
+    }
+
+    return res.json();
+}

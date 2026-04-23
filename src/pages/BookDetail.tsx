@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
-import { fetchBookDetails, fetchEditions } from "../service/api";
+import { fetchAuthor, fetchBookDetails, fetchEditions } from "../service/api";
 import { motion } from "framer-motion";
 import type { BookDetailsType, EditionType } from "../types/database";
 import { NavLink } from "react-router";
@@ -25,6 +25,22 @@ export default function BookDetail() {
     queryFn: () => fetchEditions(id!),
     enabled: !!id,
   });
+
+  const authorKeys = data?.authors.map((name) => name.author.key) || [];
+
+  const { data: authorsData } = useQuery({
+    queryKey: ["authors", authorKeys],
+    queryFn: async () => {
+      const results = await Promise.all(
+        authorKeys.map((key) => fetchAuthor(key))
+      );
+      return results;
+    },
+    enabled: authorKeys.length > 0,
+
+  })
+
+  const authorNames = authorsData?.map((a) => a.name).join(", ") || "Unknown author"
 
   if (isLoading) return <Loader />;
   if (isError) return <p>Error fetching book details.</p>;
@@ -74,7 +90,7 @@ export default function BookDetail() {
             <h2 className="text-4xl font-bold text-blue-900">{data.title}</h2>
 
             <p className="text-gray-600 mt-2">
-              Author information not available
+              by {authorNames}
             </p>
 
             <div className="flex gap-4 mt-6">
