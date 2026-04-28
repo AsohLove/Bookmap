@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { useReadingList } from "../hooks/useReadingList";
 import BookCard from "../components/BookCard";
 import { X } from "lucide-react";
@@ -8,6 +8,7 @@ export default function ReadingList() {
 
   const featuredBook = books[0];
   const otherBooks = books.slice(1);
+  const navigate = useNavigate();
 
 
   return (
@@ -33,7 +34,7 @@ export default function ReadingList() {
             <div className="bg-white p-12 rounded-lg text-center">
               <p className="text-gray-600 text-lg">
                 No books in your reading list yet. Click on the Heart icon on a
-                book to add it here!!
+                book or the add button to add a book here!!
               </p>
             </div>
           ) : (
@@ -155,7 +156,8 @@ export default function ReadingList() {
                 Our curators suggest "The Pale Blue Dot" <br /> based on your
                 recent saves.
               </p>
-              <button className="bg-blue-900 cursor-pointer text-white font-bold py-3 px-6 rounded uppercase text-sm hover:bg-blue-800 transition">
+              <button onClick={() => navigate("/")}
+              className="bg-blue-900 cursor-pointer text-white font-bold py-3 px-6 rounded uppercase text-sm hover:bg-blue-800 transition">
                 Explore More
               </button>
             </div>

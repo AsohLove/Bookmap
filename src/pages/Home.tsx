@@ -21,10 +21,10 @@ export default function Home() {
       <div className="max-w-7xl mx-auto">
           <SearchBar query={search} setQuery={handleSearch} />
         <div className="flex justify-between my-3">
-            <h2 className="text-slate-800 text-2xl font-medium">Latest Acquisitions</h2>
+            <h2 className="text-slate-800 text-3xl font-bold">Latest Acquisitions</h2>
             <div className="flex gap-3">
-                <button className="flex gap-1 cursor-pointer"><Filter size={20} /> FILTER</button>
-                <button className="flex gap-1 cursor-pointer"><ArrowUpDown size={20} /> SORT</button>
+                <button className="flex text-sm gap-1 cursor-pointer"><Filter size={20} /> FILTER</button>
+                <button className="flex text-sm gap-1 cursor-pointer"><ArrowUpDown size={20} /> SORT</button>
             </div>
         </div>
 

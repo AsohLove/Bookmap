@@ -12,7 +12,7 @@ export default function BookDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { addReadingListBook, isSaved } = useReadingList();
+  const { books, addReadingListBook, isSaved } = useReadingList();
 
   const { data, isLoading, isError } = useQuery<BookDetailsType>({
     queryKey: ["book", id],
@@ -68,6 +68,10 @@ export default function BookDetail() {
 
   const curatorQuote = getCuratorQuote(description);
 
+  const shelfBooks = books.filter((book) => book.key !== data.key);
+
+  console.log("shelf books: ", shelfBooks);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -106,8 +110,12 @@ export default function BookDetail() {
 
           <div>
             <div className="flex gap-2">
-              <h2 className="p-2 text-sm text-orange-500 text-center font-bold bg-red-200 rounded-full max-w-40">{data?.subjects?.[0] || "Popular Books"}</h2>
-              <h2 className="p-2 text-sm text-orange-500 text-center font-bold bg-red-200 rounded-full max-w-40">EDITION</h2>
+              <h2 className="p-2 text-sm text-orange-500 text-center font-bold bg-red-200 rounded-full max-w-40">
+                {data?.subjects?.[0] || "Popular Books"}
+              </h2>
+              <h2 className="p-2 text-sm text-orange-500 text-center font-bold bg-red-200 rounded-full max-w-40">
+                EDITION
+              </h2>
             </div>
             <h2 className="text-4xl font-bold text-blue-900">{data.title}</h2>
 
@@ -179,6 +187,55 @@ export default function BookDetail() {
                 </span>
               ))}
             </div>
+          </div>
+        </div>
+        <div>
+          <div className="flex gap-4 mb-4">
+            <div className="border-b-3 w-12 border-orange-700 mb-3"></div>
+            <h2 className="font-bold text-2xl text-slate-800">
+              The Curator's Shelf
+            </h2>
+          </div>
+          <div className=" ">
+            {shelfBooks.length === 0 ? (
+              <p className="text-gray-500 text-sm">
+                No books in your curated shelf yet. Add some books
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                {shelfBooks.map((bk) => {
+                  const coverId = bk.covers?.[0] || bk.cover_i;
+
+                  return (
+                    <div
+                      key={bk.key}
+                      onClick={() =>
+                        navigate(`/book/${bk.key.replace("/works/", "")}`)
+                      }
+                      className="bg-white rounded-lg shadow hover:shadow-lg transition cursor-pointer"
+                    >
+                      <img
+                        src={
+                          coverId
+                            ? `https://covers.openlibrary.org/b/id/${coverId}-L.jpg`
+                            : "https://via.placeholder.com/150x220?text=No+Cover"
+                        }
+                        alt={bk.title}
+                        className="w-full h-64 object-cover rounded-t-lg"
+                      />
+                      <div className="p-4">
+                        <h2 className="font-semibold text-blue-900 text-sm line-clamp-1">
+                          {bk.title}
+                        </h2>
+                        <h3 className="text-xs text-gray-500 mt-1">
+                          by {bk.authorNames || "Unknown"}
+                        </h3>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>
