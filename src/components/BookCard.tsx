@@ -11,7 +11,7 @@ export default function BookCard({ book }: { book: BookType }) {
 
   const saved = isSaved(book.key);
 
-  const favorite = (e) => {
+  const favorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
 
     if (saved) {
@@ -31,7 +31,7 @@ export default function BookCard({ book }: { book: BookType }) {
         src={
           book?.cover_i
             ? `https://covers.openlibrary.org/b/id/${book?.cover_i}-L.jpg`
-            : null
+            : undefined
         }
         alt={book?.title}
         className="w-full h-94 object-cover group-hover:scale-105 transition-transform duration-300"

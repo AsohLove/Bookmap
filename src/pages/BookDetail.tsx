@@ -26,7 +26,7 @@ export default function BookDetail() {
     enabled: !!id,
   });
 
-  const authorKeys = data?.authors.map((name) => name.author.key) || [];
+  const authorKeys = data?.authors?.map((name) => name.author.key) || [];
 
   const { data: authorsData } = useQuery({
     queryKey: ["authors", authorKeys],
@@ -204,7 +204,7 @@ export default function BookDetail() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 {shelfBooks.map((bk) => {
-                  const coverId = bk.covers?.[0] || bk.cover_i;
+                  const coverId = bk.cover_i;
 
                   return (
                     <div
@@ -228,7 +228,7 @@ export default function BookDetail() {
                           {bk.title}
                         </h2>
                         <h3 className="text-xs text-gray-500 mt-1">
-                          by {bk.authorNames || "Unknown"}
+                          by {"Unknown"}
                         </h3>
                       </div>
                     </div>

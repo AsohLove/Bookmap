@@ -9,8 +9,9 @@ export interface BookType {
   title: string;
   author_name?: string[];
   first_publish_year?: number;
+  subjects?: string[];
   cover_i?: number;
-  excerpts: string[];
+  excerpts: string;
 }
 
 export interface BookDetailsType {
