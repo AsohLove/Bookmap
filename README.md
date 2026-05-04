@@ -13,11 +13,12 @@ It features curated collections and a dynamic search functionality to explore bo
 - Curated collections and popular books
 
 ## Preview
-- Reading List
-![Favorite page]()
+1) Reading List
+![Favorite page](/public/Mobile.png)
 
-- Book details page
-![Recipe Details]()
+
+2) Book details page
+![Book Details](/public/Bookdetails.png)
 
 
 ## :electric_plug: How to Run the Project
@@ -30,7 +31,7 @@ It features curated collections and a dynamic search functionality to explore bo
 
 1. Clone the repository:
 
-- git clone [project repo]()
+- git clone [project repo](https://github.com/AsohLove/Bookmap.git)
 - cd bookmap
 
 2. Install project dependencies
@@ -58,6 +59,8 @@ OR
 - GitHub: [@loveasoh](https://github.com/AsohLove)
 - Twitter: [@loveasoh](https://x.com/LoveTheModifier)
 - LinkedIn: [@love asoh](https://www.linkedin.com/in/asohlove/)
+
+:earth_africa: Based in Cameroon | Open for hybrid opportunities
 
 ## :lock: License
 This project is [MIT](./LICENSE) licensed.

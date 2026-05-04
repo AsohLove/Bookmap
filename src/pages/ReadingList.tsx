@@ -166,15 +166,15 @@ export default function ReadingList() {
       </div>
 
       <footer className="bg-white border-t border-gray-200 mt-12">
-        <div className="flex justify-between p-8 max-w-7xl mx-auto">
-          <div>
+        <div className="flex flex-wrap md:justify-between p-8 max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-2">
             <h2 className="font-bold text-gray-900">The Editorial Scholar</h2>
             <p className="text-sm text-gray-600 mt-2">
               &copy; {new Date().getFullYear()} The Editorial Scholar. A Digital
               Curator Experience.
             </p>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 mt-3">
             <NavLink
               to="#"
               className="text-sm text-gray-600 hover:text-gray-900 transition"

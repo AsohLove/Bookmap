@@ -117,11 +117,11 @@ export default function BookDetail() {
                 EDITION
               </h2>
             </div>
-            <h2 className="text-4xl font-bold text-blue-900">{data.title}</h2>
+            <h2 className="text-4xl font-bold text-blue-900 mt-3">{data.title}</h2>
 
-            <p className="text-gray-600 mt-2">by {authorNames}</p>
+            <p className="text-gray-600 mt-1">by {authorNames}</p>
 
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-4 mt-4">
               <button
                 onClick={() => addReadingListBook(data)}
                 className={`px-4 py-2 cursor-pointer flex gap-2 rounded font-semibold transition ${
