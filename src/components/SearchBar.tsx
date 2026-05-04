@@ -12,7 +12,7 @@ export default function SearchBar({query, setQuery}: Props) {
   return (
     <div className="flex flex-col justify-center items-center">
         <h2 className="text-orange-600 text-xs md:text-sm font-bold my-3">CURATING KNOWLEDGE</h2>
-        <p className="text-slate-900 text-2xl md:text-5xl font-bold mb-3"><span className="text-blue-950 text-2xl md:text-5xl font-extrabold">Find your next</span> <br />
+        <p className="text-slate-900 text-2xl md:text-5xl font-bold mb-3"><span className="text-blue-950 italic text-2xl md:text-5xl font-extrabold">Find your next</span> <br />
         literary journey.
         </p>
 

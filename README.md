@@ -2,22 +2,24 @@
 
 ## :beginner: Project Overview
 
-**Bookmap** is a web application that allows users to search books and also save books to a reading list
-It features curated collections and a dynamic search functionality to explore books. Built with **React**, **TailwindCSS**, **Framer Motion**, and **TanStack Query**.
+Most book discovery patforms focus on browsing however, **Bookmap** is a built to help users not just find find books but actively allows users to **explore, curate, and manage their personal reading journey**.
+
+It combines real-time search, curated collections, and a persistent reading list to create a seamless digital library experience.
 
 ## :sparkles: Features
 
-- Search books by title, author
-- Add books to reading list
-- Responsive design for mobile and desktop
+- Search; Find books by title or author
+- Reading List; Save and manage books with localstorage
+- Responsive Design; Optimized for mobile, tablet and desktop
 - Curated collections and popular books
+- Data Fetching with Tanstack query
 
 ## Preview
-1) Reading List
-![Favorite page](/public/Mobile.png)
+1) Mobile view
+![Mobile](/public/Mobile.png)
 
 
-2) Book details page
+2) Book Details page
 ![Book Details](/public/Bookdetails.png)
 
 
@@ -36,23 +38,23 @@ It features curated collections and a dynamic search functionality to explore bo
 
 2. Install project dependencies
 - npm install
-OR
-- yarn install
 
 3. Start development server
 - npm run dev
-OR
-- yarn dev
+
 
 4. Open your browser at [localhost](http://localhost:5173)
 
-:star: **Tech Stack**
+## Live demo
+- [demo](https://bookmap-gs2zl285w-loveasoh-6785s-projects.vercel.app/)
+
+:toolbox: **Tech Stack**
 - React – UI library
 - TailwindCSS – Styling
 - Framer Motion – Animations
 - TanStack Query – Data fetching and caching
 - React Router DOM – Routing
-- Openlibrary API – book data
+- OpenLibrary API – book data
 
 :technologist: **Love Asoh**
 
