@@ -2,17 +2,15 @@
 
 ## :beginner: Project Overview
 
-**Recipe Explorer** is a web application that allows users to browse, search, and save their favorite recipes.  
-It features curated collections, category filters, and a dynamic search functionality to explore recipes by ingredients, cuisines, or chefs. Built with **React**, **TailwindCSS**, **Framer Motion**, and **TanStack Query**.
+**Bookmap** is a web application that allows users to search books and also save books to a reading list
+It features curated collections and a dynamic search functionality to explore books. Built with **React**, **TailwindCSS**, **Framer Motion**, and **TanStack Query**.
 
 ## :sparkles: Features
 
-- Browse recipes by category (Seafood, Dessert, Vegetarian, etc.)
-- Search recipes by name or ingredients
-- Save favorite recipes
-- Dark/Light mode toggle
+- Search books by title, author
+- Add books to reading list
 - Responsive design for mobile and desktop
-- Curated collections and trending recipes
+- Curated collections and popular books
 
 ## Preview
 - Reading List
@@ -53,7 +51,7 @@ OR
 - Framer Motion – Animations
 - TanStack Query – Data fetching and caching
 - React Router DOM – Routing
-- TheMealDB API – book data
+- Openlibrary API – book data
 
 :technologist: **Love Asoh**
 
