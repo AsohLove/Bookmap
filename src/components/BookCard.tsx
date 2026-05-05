@@ -34,7 +34,7 @@ export default function BookCard({ book }: { book: BookType }) {
             : undefined
         }
         alt={book?.title}
-        className="w-full h-94 object-cover group-hover:scale-105 transition-transform duration-300"
+        className="w-full h-52 sd:h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
       />
       <button
         onClick={favorite}
@@ -47,8 +47,8 @@ export default function BookCard({ book }: { book: BookType }) {
       </button>
 
       <div className="flex flex-col gap-1">
-        <h2 className="font-bold text-2xl hover:text-red-400 ">{book?.title}</h2>
-        <p className="text-gray-600 text-lg">{book?.author_name}</p>
+        <h2 className="font-bold text-lg sm:text-xl line-clamp-2 hover:text-red-400 ">{book?.title}</h2>
+        <p className="text-gray-600 text-sm sm:text-base">{book?.author_name}</p>
         <p className="text-gray-600">{book?.first_publish_year}</p>
       </div>
     </motion.div>
