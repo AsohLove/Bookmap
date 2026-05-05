@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# :book: Bookmap
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## :beginner: Project Overview
 
-Currently, two official plugins are available:
+Most book discovery patforms focus on browsing however, **Bookmap** is a built to help users not just find find books but actively allows users to **explore, curate, and manage their personal reading journey**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It combines real-time search, curated collections, and a persistent reading list to create a seamless digital library experience.
 
-## React Compiler
+## :sparkles: Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Search; Find books by title or author
+- Reading List; Save and manage books with localstorage
+- Responsive Design; Optimized for mobile, tablet and desktop
+- Curated collections and popular books
+- Data Fetching with Tanstack query
 
-## Expanding the ESLint configuration
+## Preview
+1) Mobile view
+![Mobile](/public/Mobile.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2) Book Details page
+![Book Details](/public/Bookdetails.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## :electric_plug: How to Run the Project
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Prerequisites
+- Node.js (>=16)
+- npm or yarn
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Steps
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository:
+
+- git clone [project repo](https://github.com/AsohLove/Bookmap.git)
+- cd bookmap
+
+2. Install project dependencies
+- npm install
+
+3. Start development server
+- npm run dev
+
+
+4. Open your browser at [localhost](http://localhost:5173)
+
+## Live demo
+- [demo](https://bookmap-gs2zl285w-loveasoh-6785s-projects.vercel.app/)
+
+:toolbox: **Tech Stack**
+- React – UI library
+- TailwindCSS – Styling
+- Framer Motion – Animations
+- TanStack Query – Data fetching and caching
+- React Router DOM – Routing
+- OpenLibrary API – book data
+
+:technologist: **Love Asoh**
+
+- GitHub: [@loveasoh](https://github.com/AsohLove)
+- Twitter: [@loveasoh](https://x.com/LoveTheModifier)
+- LinkedIn: [@love asoh](https://www.linkedin.com/in/asohlove/)
+
+:earth_africa: Based in Cameroon | Open for hybrid opportunities
+
+## :lock: License
+This project is [MIT](./LICENSE) licensed.
