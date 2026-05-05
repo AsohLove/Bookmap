@@ -79,7 +79,7 @@ export default function BookDetail() {
       transition={{ duration: 0.4 }}
       className="min-h-screen bg-gray-50"
     >
-      <div className="max-w-6xl mx-auto p-6">
+      <div className="max-w-6xl mx-auto px-4 py-4 sm:px-6 sm:py-6">
         <motion.button
           whileHover={{ x: -10 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -89,7 +89,7 @@ export default function BookDetail() {
           ← BACK TO SEARCH
         </motion.button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
           <div className="relative w-full h-64 md:h-80 lg:h-100">
             <img
               src={
@@ -100,7 +100,7 @@ export default function BookDetail() {
               alt={data.title}
               className=" w-full h-64 md:h-80 lg:h-100 object-cover rounded-lg shadow"
             />
-            <div className="absolute -bottom-8 -right-5 bg-white backdrop-blur-sm text-sm text-gray-900 px-3 py-2 shadow-md max-w-40">
+            <div className="absolute bottom-2 right-2 md:-bottom-8 md:-right-5 bg-white backdrop-blur-sm text-sm text-gray-900 px-3 py-2 shadow-md max-w-40">
               <p className="italic line-clamp-3">"{curatorQuote}"</p>
               <p className="mt-1 font-bold text-[10px] tracking-wide uppercase">
                 CURATOR COLLECTION
@@ -121,7 +121,7 @@ export default function BookDetail() {
 
             <p className="text-gray-600 mt-1">by {authorNames}</p>
 
-            <div className="flex gap-4 mt-4">
+            <div className="flex flex-col sm:flew-row gap-3 mt-4">
               <button
                 onClick={() => addReadingListBook(data)}
                 className={`px-4 py-2 cursor-pointer flex gap-2 rounded font-semibold transition ${
@@ -140,7 +140,7 @@ export default function BookDetail() {
               </button>
             </div>
 
-            <div className="flex gap-4 mt-8 text-sm border-t border-b p-5 border-gray-300">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 text-sm border-t border-b p-5 border-gray-300">
               <div>
                 <p className="text-gray-500">PAGE COUNT</p>
                 <p className="font-bold text-slate-900">
